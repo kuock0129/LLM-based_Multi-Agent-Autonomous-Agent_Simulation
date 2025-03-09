@@ -1,11 +1,12 @@
-# LLM-based Multi-Agent Autonomous Agent Simulation Platform  
+# Duo-Mode Multi-Agent Autonomous Agent Simulation Platform  
 
 ## Overview  
-This project aims to develop a **multi-agent autonomous simulation platform** in dynamic environment and agent behavior control. The system will demonstrate real-time agent movement, interactions, and decision-making in a virtual environment, utilizing sensors, collision handling, and user inputs for seamless simulation.  
+This project aims to develop a **Duo-Mode multi-agent autonomous agent simulation platform** in virtual environment and agent behavior control. The system will demonstrate real-time agent movement, interactions, and decision-making in a virtual environment, utilizing sensors, collision handling, and user inputs for seamless simulation.  
+
 
 ## Objectives  
 
-### 1. Automated Agent Behavior in a Dynamic Environment  
+### 1. Automated Agent Behavior in a Virtual Environment  
 - Implement **autonomous agent movement** with realistic physics-based controls.  
 - Agents will navigate the environment, responding to obstacles, and interactions.  
 - Pathfinding and decision-making will be integrated based on predefined logic.  
@@ -15,17 +16,36 @@ This project aims to develop a **multi-agent autonomous simulation platform** in
 - Implement **keyboard and input-based controls** for manual and autonomous movement.  
 - Enable **agent-to-agent interactions**, such as competitive behavior.  
 
+### 3. Dual Control Modes
+- **Autonomous Mode** (Default):
+  - Automatic obstacle avoidance
+  - Forward movement in clear paths
+  - Random direction selection when avoiding obstacles
+  - Red block detection and response
+
+- **Manual Control Mode**:
+  - Toggle with 'M' key
+  - Arrow key controls:
+    - ↑: Move forward (10.0 speed)
+    - ↓: Move backward (-5.0 speed)
+    - ←: Rotate left 
+    - →: Rotate right 
+  - Return to autonomous mode with 'Q' key
+  - Collision prevention system active
+
+### 2. Collision and Obstacle Handling
+- Proximity detection 
+- Automatic collision avoidance in both modes
+- Red block detection and response
+- Dynamic velocity adjustment near obstacles
+
 
 ## Technical Stack  
 - **Simulation Engine:** Enviro (for physics, movement, and multi-agent control)   
 - **Data Format:** JSON-based world description and configuration  
 
-## Expected Outcomes  
-- A **fully interactive** multi-agent platform demonstrating **autonomous movement, decision-making, and real-time interactions**.  
-- A **multi-user experience**, where players can control or observe agents in the dynamically generated environment.  
-- A **procedurally generated simulation space**, allowing natural language commands to define the world and its agents.  
 
-## Current Implementation Features
+## Implementation Features
 
 ### Agent Behavior
 - **State Machine Architecture**: Agents utilize a three-state behavior system:
@@ -63,7 +83,8 @@ To run the simulation:
 
 3. Controls:
    - **Mode Switching**:
-     - Press `T` to toggle between autonomous and user-controlled modes
+     - Press 'M' to enter manual control mode
+     - Press 'Q' to return to autonomous mode
    
    - **Autonomous Mode**:
      - Agents will automatically:
@@ -79,4 +100,15 @@ To run the simulation:
 
 4. Access the simulation:
    - Open a web browser and navigate to `http://localhost:8080`
-   - You should see both autonomous and user-controlled agents in the environment
+   - The agent will start in autonomous mode by default
+
+   
+
+
+### Simulation Environment
+![Simulation Environment](/project/image/result1.png)
+*Main simulation environment showing agents and obstacles*
+
+### Autonomous Navigation
+![Autonomous Navigation](/project/image/result2.png)
+*Agent demonstrating autonomous navigation and obstacle avoidance*
