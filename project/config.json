@@ -1,5 +1,5 @@
 {
-    "name": "LLM-based Multi-User Autonomous Agent Simulation",
+    "name": "Multi-Agent Autonomous Agent Simulation",
     "ip": "0.0.0.0",
     "port": 8765,
 
@@ -17,8 +17,8 @@
             "definition": "defs/agent.json",
             "style": { "fill": "yellow", "stroke": "black" },
             "position": {
-                "x": 280, 
-                "y": 150, 
+                "x": -300, 
+                "y": -160, 
                 "theta": 1
             }
         }

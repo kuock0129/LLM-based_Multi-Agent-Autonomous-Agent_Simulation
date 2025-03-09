@@ -4,6 +4,7 @@
 #include <string>
 #include <math.h>
 #include "enviro.h"
+#include <iostream>
 
 namespace
 {
@@ -17,9 +18,18 @@ namespace
         void during()
         {
             track_velocity(10, 0);
+            
+            // Check for obstacles to rotate
             if (sensor_value(0) < 40)
             {
                 emit(Event(tick_name));
+            }
+            
+            // Check for red block using sensor values
+            if (sensor_value(0) < 30 && sensor_color(0) == "red")
+            {
+                std::cout << "Red block detected! Stopping...\n";
+                emit(Event("stop"));
             }
         }
         void exit(const Event &e) {}
@@ -45,6 +55,17 @@ namespace
         std::string tick_name;
     };
 
+    class Stopped : public State, public AgentInterface
+    {
+    public:
+        void entry(const Event &e) {}
+        void during()
+        {
+            track_velocity(0, 0);
+        }
+        void exit(const Event &e) {}
+    };
+
     class WandererController : public StateMachine, public AgentInterface
     {
 
@@ -58,21 +79,14 @@ namespace
                                                                  // multiple instances of this class
             add_transition(tick_name, moving_forward, rotating);
             add_transition(tick_name, rotating, moving_forward);
+            add_transition("stop", moving_forward, stopped);
             moving_forward.set_tick_name(tick_name);
             rotating.set_tick_name(tick_name);
         }
 
-        //void update()
-        //{
-        //    if (rand() % 100 <= 5)
-         //   {
-         //       emit(Event("tick"));
-         //   }
-         //   StateMachine::update();
-        //}
-
         MovingForward moving_forward;
         Rotating rotating;
+        Stopped stopped;
         std::string tick_name;
     };
 
