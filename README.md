@@ -106,9 +106,9 @@ To run the simulation:
 
 
 ### Simulation Environment
-![Simulation Environment](/project/image/result1.png)
+![Simulation Environment](/project/result/result1.png)
 *Main simulation environment showing agents and obstacles*
 
 ### Autonomous Navigation
-![Autonomous Navigation](/project/image/result2.png)
+![Autonomous Navigation](/project/result/result2.png)
 *Agent demonstrating autonomous navigation and obstacle avoidance*
